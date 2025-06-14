@@ -16,6 +16,7 @@ if "hi_actual" not in st.session_state:
 cota_base = st.number_input("• Cota base inicial (BM)", step=0.01)
 
 usar_como_base = st.checkbox("Usar como cota base", value=True)
+progresiva = st.text_input("📏 Progresiva")
 
 vista_atras = st.number_input("• Vista Atrás (si hay cambio de estación)", step=0.01)
 vista_adelante = st.number_input("• Vista Adelante", step=0.01)
@@ -27,11 +28,11 @@ if st.button("➕ Agregar punto"):
         cota_nueva = hi - vista_adelante
         st.session_state.hi_actual = hi
         st.session_state.puntos.append({
-            "Cota Base": cota_base,
+            "Progresiva": progresiva,
             "Vista Atrás": vista_atras,
             "HI": hi,
             "Vista Adelante": vista_adelante,
-            "Cota Nueva": cota_nueva
+            "Cota": cota_nueva
         })
     else:
         # Si hay nueva vista atrás, se cambia de estación
@@ -48,11 +49,11 @@ if st.button("➕ Agregar punto"):
             cota_base = st.session_state.cota_base  # Ya viene del input
         cota_nueva = hi - vista_adelante
         st.session_state.puntos.append({
-            "Cota Base": cota_base,
+            "Progresiva": progresiva,
             "Vista Atrás": vista_atras,
             "HI": hi,
             "Vista Adelante": vista_adelante,
-            "Cota Nueva": cota_nueva
+            "Cota": cota_nueva
         })
 
 # Mostrar tabla
@@ -66,5 +67,4 @@ st.download_button(
     label="⬇ Descargar como CSV",
     data=csv,
     file_name="nivelacion_topografica.csv",
-    mime="text/csv"
-)
+    mime="text/csv")
