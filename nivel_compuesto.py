@@ -46,6 +46,9 @@ if st.button("➕ Agregar punto"):
         if st.session_state.puntos:
             cota_base = st.session_state.puntos[-1]["Cota Nueva"]
         else:
+            cota_base = 100
+
+        else:
             cota_base = st.session_state.cota_base  # Ya viene del input
         cota_nueva = hi - vista_adelante
         st.session_state.puntos.append({
