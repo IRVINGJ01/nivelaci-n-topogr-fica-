@@ -37,19 +37,14 @@ if st.button("➕ Agregar punto"):
     else:
         # Si hay nueva vista atrás, se cambia de estación
         if vista_atras != 0:
-            cota_base = st.session_state.puntos[-1]["Cota Nueva"]
+            cota_base = st.session_state.puntos[-1]["Cota Nueva"] if st.session_state.puntos else 100
             hi = cota_base + vista_atras
             st.session_state.hi_actual = hi
         else:
             hi = st.session_state.hi_actual
+            cota_base = st.session_state.puntos[-1]["Cota Nueva"] if st.session_state.puntos  else  100
 
-        if st.session_state.puntos:
-            cota_base = st.session_state.puntos[-1]["Cota Nueva"]
-        else:
-            cota_base = 100
 
-        else:
-            cota_base = st.session_state.cota_base  # Ya viene del input
         cota_nueva = hi - vista_adelante
         st.session_state.puntos.append({
             "Progresiva": progresiva,
