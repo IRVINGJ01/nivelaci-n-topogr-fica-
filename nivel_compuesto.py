@@ -54,4 +54,4 @@ st.dataframe(df, use_container_width=True)
 
 # Botón para descargar
 csv = df.to_csv(index=False).encode("utf-8")
-st.download_button("⬇ Descargar como CSV", csv, "nivelacion_topografica.csv", "text/csv")
+st.download_button("⬇ Descargar como CSV", csv, "nivelacion_topografica.csv","text/csv")
